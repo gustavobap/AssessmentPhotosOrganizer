@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            System.out.println(new Main().solution(Files.readString(Path.of("src/input.txt"))));
+            String output = new Main().solution(Files.readString(Path.of("src/input.txt")));
+            System.out.println(output);
+            FileWriter writer = new FileWriter("src/out.txt");
+            writer.write(output);
+            writer.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
